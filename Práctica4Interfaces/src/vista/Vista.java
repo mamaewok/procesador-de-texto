@@ -128,6 +128,7 @@ public class Vista extends JFrame {
 
 	public void mostrarAbrir() {
 		paDir.setVisible(true);
+		sp.setVisible(true);
 	}
 	
 	public void ocultarAbrir() {
@@ -140,6 +141,12 @@ public class Vista extends JFrame {
 		sp.setVisible(true);
 		this.repaint();
 	}
+	public void ocultarTexto() {
+		System.out.println("Cerrando fichero y ocultando texto");
+		ta.setText("");
+		sp.setVisible(false);
+		this.repaint();
+	}
 
 	public void mostrarBusqueda() {
 		paBuscar.setVisible(true);
@@ -150,34 +157,34 @@ public class Vista extends JFrame {
 	}
 	public void obligarAbrir(){
 		mostrarAbrir();
+		sp.setVisible(true);
 		ta.setText("Primero tienes que abrir un Archivo");
 		ta.setVisible(true);
-	}
-
-	public void ocultarTexto() {
-		System.out.println("Cerrando fichero y ocultando texto");
-		ta.setText("");
-		sp.setVisible(false);
 		this.repaint();
 	}
 
+	
+
 	public String devolverTextArea() {
 		return ta.getText();
+	}
+	public String devolverTextFieldDir() {
+		return tfDir.getText();
+	}
+	public String devolverTextFieldBuscar() {
+		return tfBuscar.getText();
+	}
+	public void vaciarTextFieldDir(){
+		tfDir.setText("");
 	}
 
 	public void cerrarPantalla() {
 		System.exit(0);
 	}
 
-	public String devolverTextFieldDir() {
-		return tfDir.getText();
-	}
-	public void vaciarTextFieldDir(){
-		tfDir.setText("");
-	}
+	
+	
 
-	public String devolverTextFieldBuscar() {
-		return tfBuscar.getText();
-	}
+	
 
 }
