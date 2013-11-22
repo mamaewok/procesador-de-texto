@@ -86,6 +86,7 @@ public class AccionFichero {
 	public void accionCerrar() {
 		vista.ocultarAbrir();
 		vista.ocultarTexto();
+		vista.vaciarTextFieldDir();
 	}
 
 	/**
@@ -115,9 +116,9 @@ public class AccionFichero {
 						.println("No se ha podido cerrar la búsqueda del fichero");
 			}
 		} catch (FileNotFoundException e) {
+			vista.obligarAbrir();
 			System.out
 					.println("Hay que abrir un fichero antes de realizar la búsqueda");
-			vista.obligarAbrir();
 		} catch (IOException ioe) {
 			System.out.println("Error");
 		}
