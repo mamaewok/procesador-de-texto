@@ -5,7 +5,11 @@ import javax.swing.AbstractAction;
 import javax.swing.JMenuItem;
 
 import vista.Vista;
-
+/**
+ * Clase que contiene las opciones de las acciones que realizará nuestro programa
+ * @author MAMAEWOK
+ *
+ */
 public class Listener extends AbstractAction {
 
 	private static final long serialVersionUID = 1L;
@@ -14,8 +18,8 @@ public class Listener extends AbstractAction {
 
 	// Constructor
 	/**
-	 * 
-	 * @param vista
+	 * Incluye la vista en la instanciación del objeto Listener
+	 * @param vista donde se encuentra nuestro objeto
 	 */
 	public Listener(Vista vista) {
 		super();
@@ -25,7 +29,7 @@ public class Listener extends AbstractAction {
 	// Acciones
 	@Override
 	/**
-	 * 
+	 * Implementa las funciones básicas de los botones del menu de nuestro programa
 	 */
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem menu = (JMenuItem) e.getSource();
@@ -46,8 +50,11 @@ public class Listener extends AbstractAction {
 		else if ((menu.getText().equals("Salir")))
 			accionFichero.accionSalir();
 		
-		else if ((menu.getText().equals("Buscar")))
+		else if ((menu.getText().equals("Buscar"))){
+			accionFichero.accionBuscar();
 			vista.mostrarBusqueda();
+		}
+		
 
 	}
 
