@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import vista.Vista;
 
 public class AccionFichero {
@@ -93,10 +96,16 @@ public class AccionFichero {
 	}
 
 	/**
-	 * Sale del programa cerrando su ejecución
+	 * Sale del programa cerrando su ejecución dando una advertencia antes
 	 */
 	public void accionSalir() {
-		System.exit(0);
+		JFrame f = new JFrame();
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        int i = JOptionPane.showOptionDialog(f, "¿Seguro que desea Salir?", "Option", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+        if (i == 0) {
+            System.exit(0); // normal exit  
+        }
 	}
 
 	/**
