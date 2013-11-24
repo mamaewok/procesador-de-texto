@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import vista.Vista;
 
-public class AccionFichero {
+public class Modelo {
 
 	private String direccion;
 	private Vista vista;
@@ -22,7 +22,7 @@ public class AccionFichero {
 	private BufferedReader br;
 	private String texto = "";
 
-	public AccionFichero(Vista vista) {
+	public Modelo(Vista vista) {
 		super();
 		this.vista = vista;
 	}
