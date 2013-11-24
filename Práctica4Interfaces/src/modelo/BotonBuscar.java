@@ -33,7 +33,7 @@ public class BotonBuscar extends JButton implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AccionFichero accionFichero = new AccionFichero(vista);
+		Modelo accionFichero = new Modelo(vista);
 		accionFichero.accionBuscar();
 		vista.ocultarBusqueda();
 

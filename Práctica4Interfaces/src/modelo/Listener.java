@@ -14,7 +14,7 @@ public class Listener extends AbstractAction {
 
 	private static final long serialVersionUID = 1L;
 	private Vista vista;
-	private AccionFichero accionFichero;
+	private Modelo accionFichero;
 
 	// Constructor
 	/**
@@ -37,7 +37,7 @@ public class Listener extends AbstractAction {
 		System.out.println(
 		 "el menu que genera el evento es:"+ menu.getText());
 		
-		 accionFichero = new AccionFichero(vista);
+		 accionFichero = new Modelo(vista);
 		if ((menu.getText().equals("Abrir")))
 			vista.mostrarAbrir();
 
