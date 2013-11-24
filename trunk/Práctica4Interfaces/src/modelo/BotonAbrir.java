@@ -6,15 +6,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import vista.Vista;
-
+/**
+ * Clase que implementa la accion que realiza el boton de apertura de fichero
+ * @author MAMAEWOK
+ *
+ */
 public class BotonAbrir extends JButton implements ActionListener{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Vista vista;
-	
+	/**
+	 *  Crea el objeto de tipo BotonAbrir incluyendo la vista en la que se encuentra y el nombre que tendrá dicho botón
+	 * @param vista
+	 * @param nombre
+	 */
 	public BotonAbrir(Vista vista, String nombre){
 		super();
 		this.vista = vista;
@@ -22,6 +27,9 @@ public class BotonAbrir extends JButton implements ActionListener{
 		this.addActionListener(this);
 	}
 
+	/**
+	 * Indica la acción que realiza nuestro boton de apertura de fichero
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		AccionFichero accionFichero = new AccionFichero(vista);

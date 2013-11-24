@@ -25,7 +25,7 @@ public class AccionFichero {
 	}
 
 	/**
-     * 
+     * Permite abrir un fichero que introducimos por teclado leyendolo
      */
 	public void accionAbrir() {
 		try {
@@ -39,8 +39,10 @@ public class AccionFichero {
 			vista.mostrarTexto(texto);
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("El fichero " + getDireccion() + " no existe ");
+			vista.mostrarTexto("El fichero " + getDireccion() + " no existe ");
 		} catch (IOException ioe) {
 			System.out.println("El disco esta protegido contra escritura");
+			vista.mostrarTexto("El disco esta protegido contra escritura");
 		} finally {
 			try {
 				fr.close();
@@ -51,7 +53,7 @@ public class AccionFichero {
 	}
 
 	/**
-     * 
+     * Permite escribir y guardar el texto que editemos en un fichero
      */
 	public void accionEscribirGuardar(String cadena) {
 		try {
@@ -67,21 +69,22 @@ public class AccionFichero {
 
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("El fichero " + getDireccion() + " no existe ");
+			vista.obligarAbrir("Hay que abrir un fichero antes de poder guardarlo");
 		} catch (IOException ioe) {
 			System.out.println("El disco esta protegido contra escritura");
-		} catch (Exception e) {
-			System.out.println("Error desconocido");
 		} finally {
 			try {
 				fw.close();
 			} catch (IOException e) {
 				System.out.println("No se ha podido cerrar el fichero");
-			}
+			} catch (NullPointerException npe) {
+				System.out.println("No hay nada que cerrar");
+				}
 		}
 	}
 
 	/**
-	 * 
+	 * Oculta el area de texto y vacia la direccion para poder realizar una nueva busqeuda cuando se desee
 	 */
 	public void accionCerrar() {
 		vista.ocultarAbrir();
@@ -90,24 +93,25 @@ public class AccionFichero {
 	}
 
 	/**
-	 * 
+	 * Sale del programa cerrando su ejecución
 	 */
 	public void accionSalir() {
-		vista.cerrarPantalla();
+		System.exit(0);
 	}
 
 	/**
-	 * 
+	 * Realiza la búsqueda de una palabra imprimiendo las lineas en las que aparece
 	 */
-	public void accionBuscar() {
+	public void accionBuscar() { //TODO
 		try {
 			setDireccion(vista.devolverTextFieldDir());
 			br = new BufferedReader(new FileReader(getDireccion()));
 			String linea;
-
+			String palabraABuscar = vista.devolverTextFieldBuscar();
 			while ((linea = br.readLine()) != null) {
-				if (linea.indexOf(vista.devolverTextFieldBuscar()) != -1)
+				if (linea.indexOf(palabraABuscar) != -1){
 					vista.mostrarTexto(linea);
+				}	
 			}
 			try {
 				br.close();
@@ -116,7 +120,7 @@ public class AccionFichero {
 						.println("No se ha podido cerrar la búsqueda del fichero");
 			}
 		} catch (FileNotFoundException e) {
-			vista.obligarAbrir();
+			vista.obligarAbrir("Hay que abrir un fichero antes de realizar la búsqueda");
 			System.out
 					.println("Hay que abrir un fichero antes de realizar la búsqueda");
 		} catch (IOException ioe) {
@@ -124,10 +128,18 @@ public class AccionFichero {
 		}
 	}
 
+	/**
+	 * Hace accesible la ruta del fichero a través de la variable dirección con la que trabajamos
+	 * @return direccion del fichero
+	 */
 	public String getDireccion() {
 		return direccion;
 	}
 
+	/**
+	 * Establece la dirección
+	 * @param direccion
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
