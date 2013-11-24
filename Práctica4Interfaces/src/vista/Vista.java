@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultEditorKit;
 
+import modelo.AccionFichero;
 import modelo.BotonAbrir;
 import modelo.BotonBuscar;
 import modelo.Listener;
@@ -46,6 +47,8 @@ public class Vista extends JFrame {
 
 		this.setTitle("Editor de textos");
 		this.setSize(400, 450);
+		
+		AccionFichero af = new AccionFichero(this);
 		this.setDefaultCloseOperation(Vista.EXIT_ON_CLOSE);
 
 		this.getContentPane().setLayout(new BorderLayout());
